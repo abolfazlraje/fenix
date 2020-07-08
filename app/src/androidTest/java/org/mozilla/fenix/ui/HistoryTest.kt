@@ -19,6 +19,7 @@ import org.mozilla.fenix.helpers.TestAssetHelper
 import org.mozilla.fenix.helpers.TestHelper.longTapSelectItem
 import org.mozilla.fenix.ui.robots.historyMenu
 import org.mozilla.fenix.ui.robots.homeScreen
+import org.mozilla.fenix.ui.robots.mDevice
 import org.mozilla.fenix.ui.robots.multipleSelectionToolbar
 import org.mozilla.fenix.ui.robots.navigationToolbar
 
@@ -71,6 +72,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             verifyHistoryMenuView()
@@ -87,6 +89,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
         }.openThreeDotMenu {
@@ -102,6 +105,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
         }.openThreeDotMenu {
@@ -120,11 +124,13 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
         }.openThreeDotMenu {
         }.clickOpenInNormalTab {
             // verifyPageContent(firstWebPage.content)
+            verifyPageURL("/pages/generic1.html")
         }.openTabDrawer {
             verifyNormalModeSelected()
         }
@@ -137,11 +143,13 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
         }.openThreeDotMenu {
         }.clickOpenInPrivateTab {
             // verifyPageContent(firstWebPage.content)
+            verifyPageURL("/pages/generic1.html")
         }.openTabDrawer {
             verifyPrivateModeSelected()
         }
@@ -154,6 +162,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
         }.openThreeDotMenu {
@@ -169,6 +178,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             clickDeleteHistoryButton()
@@ -185,6 +195,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             longTapSelectItem(firstWebPage.url)
@@ -207,6 +218,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openTabDrawer {
             closeTab()
         }.openHomeScreen { }.openThreeDotMenu {
@@ -229,6 +241,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             longTapSelectItem(firstWebPage.url)
@@ -249,12 +262,13 @@ class HistoryTest {
 
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
-            // verifyPageContent("Page content: 1")
+            // verifyPageContent("Page content: 1") - not needed
         }.openTabDrawer { }.openHomeScreen { }
 
         navigationToolbar {
         }.enterURLAndEnterToBrowser(secondWebPage.url) {
-            // verifyPageContent("Page content: 2")
+            // verifyPageContent("Page content: 2") - not needed
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             longTapSelectItem(firstWebPage.url)
@@ -278,6 +292,7 @@ class HistoryTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(firstWebPage.url) {
             // verifyPageContent("Page content: 1")
+            mDevice.waitForIdle()
         }.openThreeDotMenu {
         }.openHistory {
             longTapSelectItem(firstWebPage.url)

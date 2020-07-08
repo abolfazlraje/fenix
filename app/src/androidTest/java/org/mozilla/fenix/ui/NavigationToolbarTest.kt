@@ -5,7 +5,9 @@
 package org.mozilla.fenix.ui
 
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.By.text
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.Until
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
@@ -15,6 +17,7 @@ import org.junit.Test
 import org.mozilla.fenix.helpers.AndroidAssetDispatcher
 import org.mozilla.fenix.helpers.HomeActivityTestRule
 import org.mozilla.fenix.helpers.TestAssetHelper
+import org.mozilla.fenix.helpers.ext.waitNotNull
 import org.mozilla.fenix.ui.robots.navigationToolbar
 
 /**
@@ -59,14 +62,9 @@ class NavigationToolbarTest {
         }.openNavigationToolbar {
         }.enterURLAndEnterToBrowser(nextWebPage.url) {
             // verifyPageContent(nextWebPage.content)
-        }
-
-        // Re-open the three-dot menu for verification
-        navigationToolbar {
-        }.openThreeDotMenu {
-            verifyThreeDotMenuExists()
-        }.goBack {
-            // verifyPageContent(defaultWebPage.content)
+            verifyPageURL("/pages/generic2.html")
+            mDevice.pressBack()
+            verifyPageURL("/pages/generic1.html")
         }
     }
 
@@ -81,8 +79,10 @@ class NavigationToolbarTest {
         }.openNavigationToolbar {
         }.enterURLAndEnterToBrowser(nextWebPage.url) {
             // verifyPageContent(nextWebPage.content)
+            verifyPageURL("/pages/generic2.html")
             mDevice.pressBack()
             // verifyPageContent(defaultWebPage.content)
+            verifyPageURL("/pages/generic1.html")
         }
 
         // Re-open the three-dot menu for verification
@@ -92,6 +92,7 @@ class NavigationToolbarTest {
             verifyForwardButton()
         }.goForward {
             // verifyPageContent(nextWebPage.content)
+            verifyPageURL("/pages/generic2.html")
         }
     }
 
@@ -110,7 +111,7 @@ class NavigationToolbarTest {
             verifyThreeDotMenuExists()
             verifyRefreshButton()
         }.refreshPage {
-            // verifyPageContent("REFRESHED")
+            mDevice.waitNotNull(Until.findObject(text("REFRESHED")))
         }
     }
 
@@ -121,6 +122,7 @@ class NavigationToolbarTest {
         navigationToolbar {
         }.enterURLAndEnterToBrowser(defaultWebPage.url) {
             // verifyPageContent(defaultWebPage.content)
+            verifyPageURL("/pages/generic1.html")
         }
     }
 

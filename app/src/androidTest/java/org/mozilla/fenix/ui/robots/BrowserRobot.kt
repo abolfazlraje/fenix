@@ -89,6 +89,11 @@ class BrowserRobot {
         // mDevice.waitNotNull(Until.findObject(By.textContains(expectedText)), waitingTime)
     }*/
 
+    fun verifyPageURL(expectedText: String) {
+        mDevice.waitForIdle()
+        navURLBar().check(matches(withText(containsString(expectedText))))
+    }
+
     fun verifyTabCounter(expectedText: String) {
         onView(withId(R.id.counter_text))
             .check((matches(withText(containsString(expectedText)))))
